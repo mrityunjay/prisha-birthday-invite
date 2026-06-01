@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prisha's 1st Birthday | Invitation</title>
   <meta name="description" content="Join us for Prisha's first birthday celebration on 14 June 2026 at Peerless Hotel Hyderabad, Ground floor.">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <style>
     :root {
       --rose: #d91f4f;
@@ -37,6 +38,60 @@
         radial-gradient(circle at 86% 28%, rgba(217, 31, 79, 0.2), transparent 22rem),
         linear-gradient(180deg, #fff8f1 0%, #fff0f4 42%, #ffffff 100%);
       overflow-x: hidden;
+    }
+
+    /* Floating background elements */
+    .bg-elements {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .bg-shape {
+      position: absolute;
+      opacity: 0.15;
+      animation: float 20s infinite linear;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(30px, -50px) rotate(10deg); }
+      66% { transform: translate(-20px, 20px) rotate(-10deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    /* Lightbox Styles */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(17, 17, 22, 0.95);
+      display: none;
+      place-items: center;
+      padding: 2rem;
+      cursor: pointer;
+    }
+
+    .lightbox.active {
+      display: grid;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: 0.5rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      color: var(--white);
+      font-size: 2.5rem;
+      font-weight: 200;
     }
 
     a {
@@ -743,6 +798,18 @@
   </style>
 </head>
 <body>
+  <div class="bg-elements" aria-hidden="true">
+    <div class="bg-shape" style="top: 10%; left: 5%; font-size: 2rem;">💖</div>
+    <div class="bg-shape" style="top: 40%; right: 10%; font-size: 3rem; animation-delay: -5s;">✨</div>
+    <div class="bg-shape" style="top: 70%; left: 15%; font-size: 2.5rem; animation-delay: -10s;">🎈</div>
+    <div class="bg-shape" style="bottom: 10%; right: 20%; font-size: 2rem; animation-delay: -15s;">🌟</div>
+  </div>
+
+  <div class="lightbox" id="lightbox" aria-label="Photo Lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img src="" alt="Enlarged photo">
+  </div>
+
   <header class="topbar" aria-label="Invitation navigation">
     <a class="brand" href="#top" aria-label="Prisha birthday invitation">
       <span class="brand-mark">1</span>
@@ -798,32 +865,32 @@
       </div>
     </section>
 
-    <section class="details" id="details" aria-labelledby="details-title">
+    <section class="details" id="details" aria-labelledby="details-title" data-aos="fade-up">
       <div class="section-inner">
         <h2 class="section-title" id="details-title">Join the celebration</h2>
         <div class="detail-grid">
-          <article class="detail-card">
+          <article class="detail-card" data-aos="zoom-in" data-aos-delay="100">
             <div class="detail-icon" aria-hidden="true">
               <svg class="icon" viewBox="0 0 24 24"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path></svg>
             </div>
             <h2>Date</h2>
             <p>Sunday, 14 June 2026</p>
           </article>
-          <article class="detail-card">
+          <article class="detail-card" data-aos="zoom-in" data-aos-delay="200">
             <div class="detail-icon" aria-hidden="true">
               <svg class="icon" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11s-8-6-8-11a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             </div>
             <h2>Venue</h2>
             <p>Peerless Hotel Hyderabad<br>Ground floor</p>
           </article>
-          <article class="detail-card">
+          <article class="detail-card" data-aos="zoom-in" data-aos-delay="300">
             <div class="detail-icon" aria-hidden="true">
               <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
             </div>
             <h2>Time</h2>
-            <p>Cake cutting: 12:30 PM<br>Buffet lunch: 1:00 PM onwards</p>
+            <p>Cake cutting: 12:30 PM afternoon<br>Lunch buffet start at 1:00 PM onwards</p>
           </article>
-          <article class="detail-card">
+          <article class="detail-card" data-aos="zoom-in" data-aos-delay="400">
             <div class="detail-icon" aria-hidden="true">
               <svg class="icon" viewBox="0 0 24 24"><path d="M19 14c1.5-1.4 3-3.2 3-5.5A5.5 5.5 0 0 0 12 5a5.5 5.5 0 0 0-10 3.5c0 2.3 1.5 4.1 3 5.5l7 7Z"></path></svg>
             </div>
@@ -836,29 +903,29 @@
 
     <section class="gallery" id="gallery" aria-labelledby="gallery-title">
       <div class="section-inner">
-        <h2 class="section-title" id="gallery-title">One year of tiny moments</h2>
+        <h2 class="section-title" id="gallery-title" data-aos="fade-down">One year of tiny moments</h2>
         <div class="gallery-grid">
-          <figure class="tile wide"><img src="meera_birthday.jpeg" loading="lazy" alt="Prisha birthday moment"></figure>
-          <figure class="tile tall"><img src="Meera_rani.jpeg" loading="lazy" alt="Prisha dressed beautifully"></figure>
-          <figure class="tile square"><img src="meera_mango.jpeg" loading="lazy" alt="Prisha enjoying a mango moment"></figure>
-          <figure class="tile square"><img src="meera_happy.jpeg" loading="lazy" alt="Happy Prisha"></figure>
-          <figure class="tile tall"><img src="Meera_heart.jpeg" loading="lazy" alt="Prisha in a red heart themed milestone photo"></figure>
-          <figure class="tile wide"><img src="meera_smartphone.jpeg" loading="lazy" alt="Prisha looking at a smartphone"></figure>
-          <figure class="tile square"><img src="Meera_cute.jpeg" loading="lazy" alt="Cute portrait of Prisha"></figure>
-          <figure class="tile square"><img src="meera_sweet.jpeg" loading="lazy" alt="Sweet smile of Prisha"></figure>
-          <figure class="tile wide"><img src="meera_fruits.jpeg" loading="lazy" alt="Prisha's ninth month fruit setup"></figure>
-          <figure class="tile square"><img src="meera_5.jpeg" loading="lazy" alt="Prisha's fifth month photo"></figure>
-          <figure class="tile square"><img src="meera_holi.jpeg" loading="lazy" alt="Prisha celebrating Holi"></figure>
-          <figure class="tile tall"><img src="Meera_bunny.jpeg" loading="lazy" alt="Prisha in a bunny outfit"></figure>
-          <figure class="tile square"><img src="meera_papa.jpeg" loading="lazy" alt="Prisha with family"></figure>
-          <figure class="tile wide"><img src="meera_temple.jpeg" loading="lazy" alt="Prisha at the temple"></figure>
-          <figure class="tile square"><img src="meru_heart.jpeg" loading="lazy" alt="Prisha with a heart theme"></figure>
-          <figure class="tile square"><img src="meeru_sweet.jpeg" loading="lazy" alt="Sweet photo of Prisha"></figure>
+          <figure class="tile wide" data-aos="fade-up"><img src="meera_birthday.jpeg" loading="lazy" alt="Prisha birthday moment"></figure>
+          <figure class="tile tall" data-aos="fade-up" data-aos-delay="100"><img src="Meera_rani.jpeg" loading="lazy" alt="Prisha dressed beautifully"></figure>
+          <figure class="tile square" data-aos="fade-up" data-aos-delay="200"><img src="meera_mango.jpeg" loading="lazy" alt="Prisha enjoying a mango moment"></figure>
+          <figure class="tile square" data-aos="fade-up" data-aos-delay="300"><img src="meera_happy.jpeg" loading="lazy" alt="Happy Prisha"></figure>
+          <figure class="tile tall" data-aos="fade-up" data-aos-delay="100"><img src="Meera_heart.jpeg" loading="lazy" alt="Prisha in a red heart themed milestone photo"></figure>
+          <figure class="tile wide" data-aos="fade-up" data-aos-delay="200"><img src="meera_smartphone.jpeg" loading="lazy" alt="Prisha looking at a smartphone"></figure>
+          <figure class="tile square" data-aos="fade-up" data-aos-delay="300"><img src="Meera_cute.jpeg" loading="lazy" alt="Cute portrait of Prisha"></figure>
+          <figure class="tile square" data-aos="fade-up" data-aos-delay="400"><img src="meera_sweet.jpeg" loading="lazy" alt="Sweet smile of Prisha"></figure>
+          <figure class="tile wide" data-aos="fade-up"><img src="meera_fruits.jpeg" loading="lazy" alt="Prisha's ninth month fruit setup"></figure>
+          <figure class="tile square" data-aos="fade-up" data-aos-delay="100"><img src="meera_5.jpeg" loading="lazy" alt="Prisha's fifth month photo"></figure>
+          <figure class="tile square" data-aos="fade-up" data-aos-delay="200"><img src="meera_holi.jpeg" loading="lazy" alt="Prisha celebrating Holi"></figure>
+          <figure class="tile tall" data-aos="fade-up" data-aos-delay="300"><img src="Meera_bunny.jpeg" loading="lazy" alt="Prisha in a bunny outfit"></figure>
+          <figure class="tile square" data-aos="fade-up"><img src="meera_papa.jpeg" loading="lazy" alt="Prisha with family"></figure>
+          <figure class="tile wide" data-aos="fade-up" data-aos-delay="100"><img src="meera_temple.jpeg" loading="lazy" alt="Prisha at the temple"></figure>
+          <figure class="tile square" data-aos="fade-up" data-aos-delay="200"><img src="meru_heart.jpeg" loading="lazy" alt="Prisha with a heart theme"></figure>
+          <figure class="tile square" data-aos="fade-up" data-aos-delay="300"><img src="meeru_sweet.jpeg" loading="lazy" alt="Sweet photo of Prisha"></figure>
         </div>
       </div>
     </section>
 
-    <section class="invite-note" id="blessing" aria-labelledby="blessing-title">
+    <section class="invite-note" id="blessing" aria-labelledby="blessing-title" data-aos="fade-up">
       <div class="note-photo">
         <img src="ChatGPT%20Image%20Jun%201,%202026,%2008_21_47%20AM.png" alt="A polished portrait of Prisha">
       </div>
@@ -928,22 +995,66 @@
     </section>
   </main>
 
-  <footer>
+  <footer id="contact">
     <span class="footer-line">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.8 6 6.2.7-4.6 4.2 1.2 6.1L12 16l-5.6 3 1.2-6.1L3 8.7 9.2 8Z"></path></svg>
-      Developed &amp; design by Mrityunjay
+      Developed &amp; Design with love
     </span><br>
-    <a class="footer-line" href="mailto:mrityunjay.ranjan.kumar@gmail.com">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
-      mrityunjay.ranjan.kumar@gmail.com
-    </a><br>
-    <a class="footer-line" href="https://wa.me/917845148919" target="_blank" rel="noopener">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"></path><path d="M9 9.5c.4 2.2 1.8 3.6 4 4"></path><path d="M9 9.5l1-1"></path><path d="M13 13.5l1.3-1"></path></svg>
-      WhatsApp: +91 78451 48919
-    </a>
+    <div class="actions" style="justify-content: center; margin-top: 1.5rem;">
+      <a class="button secondary" href="mailto:mrityunjay.ranjan.kumar@gmail.com" style="background: rgba(255,255,255,0.1); color: var(--gold); border-color: var(--gold);">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
+        Send Email
+      </a>
+      <a class="button secondary" href="https://wa.me/917845148919" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.1); color: var(--gold); border-color: var(--gold);">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"></path><path d="M9 9.5c.4 2.2 1.8 3.6 4 4"></path><path d="M9 9.5l1-1"></path><path d="M13 13.5l1.3-1"></path></svg>
+        WhatsApp Host
+      </a>
+    </div>
   </footer>
 
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+
+    // Confetti Logic
+    function fireConfetti() {
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#d91f4f', '#ff4f7a', '#f6cf6a', '#198a68']
+      });
+    }
+
+    // Fire on load
+    window.addEventListener('load', () => {
+      setTimeout(fireConfetti, 500);
+    });
+
+    // Lightbox Logic
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const tiles = document.querySelectorAll('.tile img, .photo img');
+
+    tiles.forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
     const eventDate = new Date("2026-06-14T00:00:00+05:30").getTime();
     const units = {
       days: document.getElementById("days"),
@@ -973,6 +1084,7 @@
 
     rsvpForm.addEventListener("submit", (event) => {
       event.preventDefault();
+      fireConfetti(); // Celebration on RSVP!
       const formData = new FormData(rsvpForm);
       const name = String(formData.get("Name") || "").trim();
       const mobile = String(formData.get("Mobile") || "").trim();
@@ -986,8 +1098,11 @@
       ].join("\n");
 
       const whatsappUrl = `https://wa.me/917845148919?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, "_blank", "noopener");
-      rsvpStatus.textContent = "WhatsApp opened with your RSVP details. Please tap send there to confirm.";
+      
+      setTimeout(() => {
+        window.open(whatsappUrl, "_blank", "noopener");
+        rsvpStatus.textContent = "WhatsApp opened with your RSVP details. Please tap send there to confirm.";
+      }, 1000);
     });
   </script>
 </body>
