@@ -204,6 +204,17 @@
       transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
     }
 
+    .icon {
+      width: 1.15rem;
+      height: 1.15rem;
+      flex: 0 0 auto;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
     .button.primary {
       color: var(--white);
       background: linear-gradient(135deg, var(--rose), var(--coral));
@@ -350,6 +361,11 @@
       color: var(--white);
       background: var(--rose);
       font-size: 1.3rem;
+    }
+
+    .detail-icon .icon {
+      width: 1.35rem;
+      height: 1.35rem;
     }
 
     .detail-card:nth-child(2) .detail-icon {
@@ -595,6 +611,14 @@
       text-underline-offset: 0.2rem;
     }
 
+    .footer-line {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
     @media (max-width: 900px) {
       .nav {
         display: none;
@@ -743,8 +767,18 @@
           Prisha's first birthday and bless her with love, smiles, and happy memories.
         </p>
         <div class="actions">
-          <a class="button primary" href="https://maps.app.goo.gl/u2jPQNfoZAyULLJD9" target="_blank" rel="noopener">Open Location</a>
-          <a class="button secondary" href="#details">View Details</a>
+          <a class="button primary" href="https://maps.app.goo.gl/u2jPQNfoZAyULLJD9" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11s-8-6-8-11a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            Open Location
+          </a>
+          <a class="button secondary" href="#details">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M3 10h18"></path></svg>
+            View Details
+          </a>
+          <a class="button secondary" href="invitation-card.jpg" download>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="M7 10l5 5 5-5"></path><path d="M12 15V3"></path></svg>
+            Invitation Card
+          </a>
         </div>
       </div>
 
@@ -769,17 +803,23 @@
         <h2 class="section-title" id="details-title">Join the celebration</h2>
         <div class="detail-grid">
           <article class="detail-card">
-            <div class="detail-icon" aria-hidden="true">1</div>
+            <div class="detail-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path></svg>
+            </div>
             <h2>Date</h2>
             <p>Sunday, 14 June 2026</p>
           </article>
           <article class="detail-card">
-            <div class="detail-icon" aria-hidden="true">@</div>
+            <div class="detail-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11s-8-6-8-11a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
             <h2>Venue</h2>
             <p>Peerless Hotel Hyderabad<br>Ground floor</p>
           </article>
           <article class="detail-card">
-            <div class="detail-icon" aria-hidden="true">&lt;3</div>
+            <div class="detail-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M19 14c1.5-1.4 3-3.2 3-5.5A5.5 5.5 0 0 0 12 5a5.5 5.5 0 0 0-10 3.5c0 2.3 1.5 4.1 3 5.5l7 7Z"></path></svg>
+            </div>
             <h2>With love</h2>
             <p>Your presence and blessings will make Prisha's first birthday unforgettable.</p>
           </article>
@@ -828,7 +868,10 @@
           <div class="count"><strong id="seconds">0</strong><span>Seconds</span></div>
         </div>
         <div class="actions">
-          <a class="button primary" href="https://maps.app.goo.gl/u2jPQNfoZAyULLJD9" target="_blank" rel="noopener">Get Directions</a>
+          <a class="button primary" href="https://maps.app.goo.gl/u2jPQNfoZAyULLJD9" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l19-9-9 19-2-8-8-2Z"></path></svg>
+            Get Directions
+          </a>
         </div>
       </div>
     </section>
@@ -866,7 +909,10 @@
             </label>
           </div>
 
-          <button class="button primary form-submit" type="submit">Send RSVP</button>
+          <button class="button primary form-submit" type="submit">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"></path><path d="M8 10h8"></path><path d="M8 14h5"></path></svg>
+            Send RSVP
+          </button>
           <p class="form-note" id="rsvp-status">
             Your RSVP opens as a WhatsApp message to the birthday host, so the details are saved in chat.
           </p>
@@ -876,9 +922,18 @@
   </main>
 
   <footer>
-    Developed &amp; design by Mrityunjay<br>
-    <a href="mailto:mrityunjay.ranjan.kumar@gmail.com">mrityunjay.ranjan.kumar@gmail.com</a><br>
-    <a href="https://wa.me/917845148919" target="_blank" rel="noopener">WhatsApp: +91 78451 48919</a>
+    <span class="footer-line">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.8 6 6.2.7-4.6 4.2 1.2 6.1L12 16l-5.6 3 1.2-6.1L3 8.7 9.2 8Z"></path></svg>
+      Developed &amp; design by Mrityunjay
+    </span><br>
+    <a class="footer-line" href="mailto:mrityunjay.ranjan.kumar@gmail.com">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
+      mrityunjay.ranjan.kumar@gmail.com
+    </a><br>
+    <a class="footer-line" href="https://wa.me/917845148919" target="_blank" rel="noopener">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"></path><path d="M9 9.5c.4 2.2 1.8 3.6 4 4"></path><path d="M9 9.5l1-1"></path><path d="M13 13.5l1.3-1"></path></svg>
+      WhatsApp: +91 78451 48919
+    </a>
   </footer>
 
   <script>
