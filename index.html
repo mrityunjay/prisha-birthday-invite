@@ -1025,9 +1025,9 @@
     <section class="rsvp" id="rsvp" aria-labelledby="rsvp-title">
       <div class="section-inner rsvp-layout">
         <div class="rsvp-copy">
-          <h2 class="section-title" id="rsvp-title">Will you join us?</h2>
+          <h2 class="section-title" id="rsvp-title">Be Our Guest</h2>
           <p>
-            Share your details so we can plan the celebration warmly for every guest. Mobile number is optional.
+            We're so excited to celebrate Prisha's big day! Please let us know if you can make it so we can prepare a warm welcome for you.
           </p>
         </div>
         <form class="rsvp-form" id="rsvp-form">
@@ -1177,10 +1177,15 @@
       const members = String(formData.get("Family members attending") || "").trim();
 
       const message = [
-        "RSVP for Prisha's 1st Birthday",
+        `Hi! Thank you so much for the lovely invitation to Prisha's 1st Birthday! 🎂`,
+        `We will definitely attend and can't wait to celebrate this special milestone with you all.`,
+        ``,
+        `✨ RSVP Details:`,
         `Name: ${name}`,
         `Mobile: ${mobile || "Not shared"}`,
-        `Family members attending: ${members}`
+        `Family members: ${members}`,
+        ``,
+        `See you there! ❤️`
       ].join("\n");
 
       const whatsappUrl = `https://wa.me/917845148919?text=${encodeURIComponent(message)}`;
