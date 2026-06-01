@@ -12,23 +12,87 @@
     html,
     body {
       margin: 0;
-      width: 1080px;
-      height: 1350px;
-      overflow: hidden;
+      padding: 0;
       background: #111116;
       font-family: "Segoe UI", system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Container to allow scaling on mobile */
+    .card-container {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
     }
 
     .card {
       position: relative;
       width: 1080px;
       height: 1350px;
+      flex-shrink: 0;
       overflow: hidden;
       color: #fff8f1;
       background:
         radial-gradient(circle at 22% 16%, rgba(246, 207, 106, 0.34), transparent 260px),
         radial-gradient(circle at 78% 26%, rgba(255, 79, 122, 0.32), transparent 300px),
         linear-gradient(145deg, #150f13 0%, #2a0713 44%, #111116 100%);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+    }
+
+    @media (max-width: 1120px) {
+      .card {
+        transform: scale(calc(window.innerWidth / 1120)); /* This is a bit complex for pure CSS without JS or container queries */
+      }
+    }
+
+    /* Better approach: use a responsive wrapper with aspect ratio */
+    .card-responsive {
+      --card-width: 1080;
+      --card-height: 1350;
+      position: relative;
+      width: 100%;
+      max-width: 600px; /* Readable on mobile */
+      aspect-ratio: 1080 / 1350;
+      overflow: hidden;
+      color: #fff8f1;
+      background:
+        radial-gradient(circle at 22% 16%, rgba(246, 207, 106, 0.34), transparent 260px),
+        radial-gradient(circle at 78% 26%, rgba(255, 79, 122, 0.32), transparent 300px),
+        linear-gradient(145deg, #150f13 0%, #2a0713 44%, #111116 100%);
+      border: 3px solid #111116;
+    }
+
+    /* Redefining styles to be relative (%) instead of px for the responsive version */
+    /* But to keep the "wow" card as is, let's just use a CSS scale zoom */
+
+    .zoom-wrapper {
+       zoom: 0.3; /* Default for mobile */
+       transform-origin: center center;
+    }
+
+    @media (min-width: 600px) {
+      .zoom-wrapper { zoom: 0.5; }
+    }
+    @media (min-width: 1080px) {
+      .zoom-wrapper { zoom: 1; }
+    }
+
+    /* Reverting to a more robust responsive design for the card */
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 1080px;
+      height: auto;
+      aspect-ratio: 1080 / 1350;
+      margin: 0 auto;
+      overflow: hidden;
+      color: #fff8f1;
+      /* ... rest as before ... */
     }
 
     .card::before {
