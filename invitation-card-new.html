@@ -238,8 +238,36 @@
 
       <p class="footer-note">Your blessings are the greatest gift...</p>
       
-      <a href="index.html#rsvp" class="btn-rsvp">Send RSVP</a>
+      <div style="display: flex; gap: 10px; margin-top: 20px;">
+        <a href="index.html#rsvp" class="btn-rsvp">Send RSVP</a>
+        <button id="downloadBtn" class="btn-rsvp" style="background: var(--gold); cursor: pointer; border: none;">Save as Image</button>
+      </div>
     </div>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+      const card = document.querySelector('.card');
+      const btnGroup = this.parentElement;
+      
+      // Hide buttons temporarily for the screenshot
+      btnGroup.style.display = 'none';
+      
+      html2canvas(card, {
+        scale: 2, // High quality
+        useCORS: true,
+        backgroundColor: '#fff8f1'
+      }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'Prisha-Birthday-Invitation.jpg';
+        link.href = canvas.toDataURL('image/jpeg', 0.9);
+        link.click();
+        
+        // Show buttons again
+        btnGroup.style.display = 'flex';
+      });
+    });
+  </script>
 </body>
 </html>
