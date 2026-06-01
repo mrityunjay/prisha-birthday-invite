@@ -322,6 +322,7 @@
       font-size: clamp(2rem, 5vw, 4rem);
       line-height: 1;
       text-align: center;
+      overflow-wrap: anywhere;
     }
 
     .detail-grid {
@@ -648,6 +649,11 @@
         font-size: clamp(3.45rem, 17vw, 4.15rem);
       }
 
+      .section-title {
+        font-size: clamp(1.85rem, 9vw, 2.45rem);
+        line-height: 1.08;
+      }
+
       .intro {
         font-size: 1rem;
         overflow-wrap: anywhere;
@@ -829,12 +835,7 @@
             Share your details so we can plan the celebration warmly for every guest. Mobile number is optional.
           </p>
         </div>
-        <form class="rsvp-form" action="https://formsubmit.co/mrityunjay.ranjan.kumar@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="RSVP for Prisha's 1st Birthday">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://mrityunjay.github.io/prisha-birthday-invite/">
-
+        <form class="rsvp-form" id="rsvp-form">
           <label>
             Name
             <input type="text" name="Name" autocomplete="name" required placeholder="Your name">
@@ -860,8 +861,8 @@
           </div>
 
           <button class="button primary form-submit" type="submit">Send RSVP</button>
-          <p class="form-note">
-            Responses are sent to the birthday host's email inbox. The first test submission may require email confirmation.
+          <p class="form-note" id="rsvp-status">
+            Your RSVP opens as a WhatsApp message to the birthday host, so the details are saved in chat.
           </p>
         </form>
       </div>
@@ -898,6 +899,28 @@
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    const rsvpForm = document.getElementById("rsvp-form");
+    const rsvpStatus = document.getElementById("rsvp-status");
+
+    rsvpForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(rsvpForm);
+      const name = String(formData.get("Name") || "").trim();
+      const mobile = String(formData.get("Mobile") || "").trim();
+      const members = String(formData.get("Family members attending") || "").trim();
+
+      const message = [
+        "RSVP for Prisha's 1st Birthday",
+        `Name: ${name}`,
+        `Mobile: ${mobile || "Not shared"}`,
+        `Family members attending: ${members}`
+      ].join("\n");
+
+      const whatsappUrl = `https://wa.me/917845148919?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, "_blank", "noopener");
+      rsvpStatus.textContent = "WhatsApp opened with your RSVP details. Please tap send there to confirm.";
+    });
   </script>
 </body>
 </html>
