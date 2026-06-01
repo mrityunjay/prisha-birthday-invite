@@ -237,74 +237,7 @@
       </div>
 
       <p class="footer-note">Your blessings are the greatest gift...</p>
-      
-      <div style="display: flex; gap: 10px; margin-top: 20px;">
-        <a href="index.html#rsvp" class="btn-rsvp">Send RSVP</a>
-        <button id="downloadBtn" class="btn-rsvp" style="background: var(--gold); cursor: pointer; border: none;">Save as Image</button>
-      </div>
     </div>
   </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script>
-    document.getElementById('downloadBtn').addEventListener('click', function() {
-      const card = document.querySelector('.card');
-      const btnGroup = this.parentElement;
-      const statusBtn = this;
-      const originalText = statusBtn.innerText;
-      
-      statusBtn.innerText = 'Generating...';
-      statusBtn.disabled = true;
-      
-      // Hide buttons temporarily for the screenshot
-      btnGroup.style.opacity = '0';
-      
-      // Ensure all images are loaded before capturing
-      const images = card.querySelectorAll('img');
-      const promises = Array.from(images).map(img => {
-        if (img.complete) return Promise.resolve();
-        return new Promise(resolve => { img.onload = resolve; img.onerror = resolve; });
-      });
-
-      Promise.all(promises).then(() => {
-        // Add a small delay for any CSS animations to settle
-        setTimeout(() => {
-          html2canvas(card, {
-            scale: 3, // Even higher quality for sharing
-            useCORS: true,
-            allowTaint: true,
-            logging: false,
-            backgroundColor: '#fff8f1',
-            width: card.offsetWidth,
-            height: card.offsetHeight
-          }).then(canvas => {
-            try {
-              const imageData = canvas.toDataURL('image/jpeg', 0.95);
-              const link = document.createElement('a');
-              link.download = 'Prisha-1st-Birthday-Invitation.jpg';
-              link.href = imageData;
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-            } catch (err) {
-              console.error('Download failed', err);
-              alert('Sorry, the automatic download failed. Please try taking a screenshot of the card instead!');
-            }
-            
-            // Restore UI
-            btnGroup.style.opacity = '1';
-            statusBtn.innerText = originalText;
-            statusBtn.disabled = false;
-          }).catch(err => {
-            console.error('Canvas generation failed', err);
-            btnGroup.style.opacity = '1';
-            statusBtn.innerText = originalText;
-            statusBtn.disabled = false;
-            alert('Could not generate image. A quick screenshot might be best!');
-          });
-        }, 500);
-      });
-    });
-  </script>
 </body>
 </html>
