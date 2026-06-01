@@ -402,6 +402,87 @@
       background: linear-gradient(135deg, #fff4e0, #ffe4e7 48%, #e7fff7);
     }
 
+    .rsvp {
+      background:
+        linear-gradient(135deg, rgba(25, 138, 104, 0.08), rgba(245, 189, 53, 0.16)),
+        var(--white);
+    }
+
+    .rsvp-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: clamp(1.3rem, 4vw, 3rem);
+      align-items: start;
+    }
+
+    .rsvp-copy {
+      max-width: 30rem;
+    }
+
+    .rsvp-copy p {
+      margin: 0;
+      color: #5b4c53;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .rsvp-form {
+      display: grid;
+      gap: 1rem;
+      padding: clamp(1rem, 3vw, 1.5rem);
+      border: 1px solid rgba(194, 56, 98, 0.13);
+      border-radius: 0.5rem;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 18px 48px rgba(95, 39, 55, 0.1);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    label {
+      display: grid;
+      gap: 0.45rem;
+      color: #6d3d50;
+      font-size: 0.82rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 3.2rem;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid rgba(194, 56, 98, 0.22);
+      border-radius: 0.5rem;
+      color: var(--ink);
+      background: var(--white);
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--rose);
+      box-shadow: 0 0 0 0.22rem rgba(194, 56, 98, 0.13);
+    }
+
+    .form-note {
+      margin: 0;
+      color: #6c5d64;
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .form-submit {
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+    }
+
     .note-photo {
       overflow: hidden;
       min-height: 28rem;
@@ -479,7 +560,8 @@
       }
 
       .detail-grid,
-      .invite-note {
+      .invite-note,
+      .rsvp-layout {
         grid-template-columns: 1fr;
       }
 
@@ -574,6 +656,10 @@
       .countdown {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -587,6 +673,7 @@
       <a href="#details">Details</a>
       <a href="#gallery">Moments</a>
       <a href="#blessing">Blessings</a>
+      <a href="#rsvp">RSVP</a>
       <a href="https://maps.app.goo.gl/u2jPQNfoZAyULLJD9" target="_blank" rel="noopener">Map</a>
     </nav>
   </header>
@@ -613,7 +700,7 @@
             <img src="ChatGPT%20Image%20Jun%201,%202026,%2008_21_38%20AM.png" alt="Prisha in a colorful birthday outfit">
           </figure>
           <figure class="photo small-a">
-            <img src="Meera_birth.jpeg" alt="Prisha as a newborn">
+            <img src="Meera_cute.jpeg" alt="Prisha looking cute">
           </figure>
           <figure class="photo small-b">
             <img src="meeru_rose.jpeg" alt="Prisha smiling with flowers">
@@ -649,14 +736,22 @@
       <div class="section-inner">
         <h2 class="section-title" id="gallery-title">One year of tiny moments</h2>
         <div class="gallery-grid">
-          <figure class="tile wide"><img src="meera_birthday.jpeg" alt="Prisha birthday moment"></figure>
-          <figure class="tile tall"><img src="Meera_rani.jpeg" alt="Prisha dressed beautifully"></figure>
-          <figure class="tile square"><img src="meera_mango.jpeg" alt="Prisha enjoying a mango moment"></figure>
-          <figure class="tile square"><img src="meera_happy.jpeg" alt="Happy Prisha"></figure>
-          <figure class="tile tall"><img src="meera_rajsthani.jpeg" alt="Prisha in traditional clothes"></figure>
-          <figure class="tile wide"><img src="meera_smartphone.jpeg" alt="Prisha looking at a smartphone"></figure>
-          <figure class="tile square"><img src="Meera_cute.jpeg" alt="Cute portrait of Prisha"></figure>
-          <figure class="tile square"><img src="meera_sweet.jpeg" alt="Sweet smile of Prisha"></figure>
+          <figure class="tile wide"><img src="meera_birthday.jpeg" loading="lazy" alt="Prisha birthday moment"></figure>
+          <figure class="tile tall"><img src="Meera_rani.jpeg" loading="lazy" alt="Prisha dressed beautifully"></figure>
+          <figure class="tile square"><img src="meera_mango.jpeg" loading="lazy" alt="Prisha enjoying a mango moment"></figure>
+          <figure class="tile square"><img src="meera_happy.jpeg" loading="lazy" alt="Happy Prisha"></figure>
+          <figure class="tile tall"><img src="meera_rajsthani.jpeg" loading="lazy" alt="Prisha in traditional clothes"></figure>
+          <figure class="tile wide"><img src="meera_smartphone.jpeg" loading="lazy" alt="Prisha looking at a smartphone"></figure>
+          <figure class="tile square"><img src="Meera_cute.jpeg" loading="lazy" alt="Cute portrait of Prisha"></figure>
+          <figure class="tile square"><img src="meera_sweet.jpeg" loading="lazy" alt="Sweet smile of Prisha"></figure>
+          <figure class="tile wide"><img src="meera_fruits.jpeg" loading="lazy" alt="Prisha's ninth month fruit setup"></figure>
+          <figure class="tile square"><img src="meera_5.jpeg" loading="lazy" alt="Prisha's fifth month photo"></figure>
+          <figure class="tile square"><img src="meera_holi.jpeg" loading="lazy" alt="Prisha celebrating Holi"></figure>
+          <figure class="tile tall"><img src="Meera_bunny.jpeg" loading="lazy" alt="Prisha in a bunny outfit"></figure>
+          <figure class="tile square"><img src="meera_papa.jpeg" loading="lazy" alt="Prisha with family"></figure>
+          <figure class="tile wide"><img src="meera_temple.jpeg" loading="lazy" alt="Prisha at the temple"></figure>
+          <figure class="tile square"><img src="meru_heart.jpeg" loading="lazy" alt="Prisha with a heart theme"></figure>
+          <figure class="tile square"><img src="meeru_sweet.jpeg" loading="lazy" alt="Sweet photo of Prisha"></figure>
         </div>
       </div>
     </section>
@@ -680,6 +775,52 @@
         <div class="actions">
           <a class="button primary" href="https://maps.app.goo.gl/u2jPQNfoZAyULLJD9" target="_blank" rel="noopener">Get Directions</a>
         </div>
+      </div>
+    </section>
+
+    <section class="rsvp" id="rsvp" aria-labelledby="rsvp-title">
+      <div class="section-inner rsvp-layout">
+        <div class="rsvp-copy">
+          <h2 class="section-title" id="rsvp-title">Will you join us?</h2>
+          <p>
+            Share your details so we can plan the celebration warmly for every guest. Mobile number is optional.
+          </p>
+        </div>
+        <form class="rsvp-form" action="https://formsubmit.co/mrityunjay.ranjan.kumar@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="RSVP for Prisha's 1st Birthday">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://mrityunjay.github.io/prisha-birthday-invite/">
+
+          <label>
+            Name
+            <input type="text" name="Name" autocomplete="name" required placeholder="Your name">
+          </label>
+
+          <div class="form-row">
+            <label>
+              Mobile optional
+              <input type="tel" name="Mobile" autocomplete="tel" placeholder="Mobile number">
+            </label>
+            <label>
+              Family members
+              <select name="Family members attending" required>
+                <option value="">Select count</option>
+                <option value="1">1 person</option>
+                <option value="2">2 people</option>
+                <option value="3">3 people</option>
+                <option value="4">4 people</option>
+                <option value="5">5 people</option>
+                <option value="6+">6 or more</option>
+              </select>
+            </label>
+          </div>
+
+          <button class="button primary form-submit" type="submit">Send RSVP</button>
+          <p class="form-note">
+            Responses are sent to the birthday host's email inbox. The first test submission may require email confirmation.
+          </p>
+        </form>
       </div>
     </section>
   </main>
