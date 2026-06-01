@@ -121,7 +121,7 @@
       position: absolute;
       left: 86px;
       right: 86px;
-      top: 704px;
+      top: 646px;
       text-align: center;
     }
 
@@ -138,34 +138,34 @@
       margin: 0;
       color: #fff8f1;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 108px;
+      font-size: 84px;
       line-height: 0.88;
       letter-spacing: 0;
       text-shadow: 0 12px 0 rgba(217, 31, 79, 0.42);
     }
 
     .sub {
-      margin: 26px auto 0;
-      max-width: 780px;
+      margin: 18px auto 0;
+      max-width: 680px;
       color: #ffd9e4;
-      font-size: 27px;
+      font-size: 20px;
       font-weight: 800;
-      line-height: 1.25;
+      line-height: 1.18;
     }
 
     .details {
       position: absolute;
       left: 86px;
       right: 86px;
-      bottom: 116px;
+      bottom: 96px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
     }
 
     .detail {
-      min-height: 122px;
-      padding: 20px 28px;
+      min-height: 108px;
+      padding: 18px 24px;
       border: 2px solid rgba(246, 207, 106, 0.58);
       background: rgba(255, 248, 241, 0.08);
       box-shadow: 0 20px 54px rgba(0, 0, 0, 0.22);
@@ -173,6 +173,11 @@
 
     .detail.full {
       grid-column: 1 / -1;
+    }
+
+    .detail.wide {
+      grid-column: 1 / -1;
+      min-height: 104px;
     }
 
     .label {
@@ -195,7 +200,7 @@
       position: absolute;
       left: 86px;
       right: 86px;
-      bottom: 54px;
+      bottom: 30px;
       color: rgba(255, 248, 241, 0.86);
       font-size: 23px;
       font-weight: 700;
@@ -224,7 +229,7 @@
     <section class="copy">
       <p class="eyebrow">You are invited</p>
       <h1>Prisha</h1>
-      <p class="sub">Join us to celebrate a beautiful first year filled with smiles, love, and blessings.</p>
+      <p class="sub">Join us to celebrate with love, smiles, and blessings.</p>
     </section>
 
     <section class="details">
@@ -235,6 +240,10 @@
       <div class="detail">
         <p class="label">Venue</p>
         <p class="value">Peerless Hotel Hyderabad<br>Ground floor</p>
+      </div>
+      <div class="detail wide">
+        <p class="label">Time</p>
+        <p class="value">Cake cutting: 12:30 PM<br>Buffet lunch: 1:00 PM onwards</p>
       </div>
       <div class="detail full">
         <p class="label">Location</p>
